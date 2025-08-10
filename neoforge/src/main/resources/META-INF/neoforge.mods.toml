@@ -1,0 +1,44 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+issueTrackerURL = "https://github.com/Akxe/villager-trainers/issues"
+license = "MIT"
+
+[[mods]]
+modId = "villager_trainers"
+version = "${version}"
+displayName = "Villager Trainers"
+authors = "Akxe"
+description = '''
+Adds Pokémon-style trainer battles featuring villagers who become battle trainers. Engage in structured, turn-based encounters that use team composition, status effects, and strategy.
+
+Planned / Core Concepts:
+- Challenge "Trainer" villagers generated with themed teams
+- Turn-based battle system (speed, abilities, statuses)
+- Progression & rewards for victories
+- Cross-loader support (Fabric + NeoForge)
+'''
+logoFile = "assets/villager_trainers/icon.png"
+
+[[dependencies.villager_trainers]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.villager_trainers]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.villager_trainers]]
+modId = "architectury"
+type = "required"
+versionRange = "[13.0.8,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "villager_trainers.mixins.json"

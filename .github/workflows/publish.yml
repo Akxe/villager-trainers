@@ -1,0 +1,59 @@
+name: Publish to Modrinth
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+
+    - name: Build with Gradle
+      run: ./gradlew build
+
+    - name: Publish to Modrinth (Fabric)
+      uses: Kir-Antipov/mc-publish@v3.3
+      with:
+        modrinth-id: h0MqxOhk
+        modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+        files: fabric/build/libs/*[0-9].jar
+        name: Villager Trainers ${{ github.ref_name }} (Fabric)
+        version: ${{ github.ref_name }}
+        version-type: release
+        loaders: fabric
+        game-versions: ">=1.21.1"
+        dependencies: |
+          fabric-api@>=0.116.4 | depends
+          architectury-api@>=13.0.8 | depends
+        changelog-file: CHANGELOG.md
+
+    - name: Publish to Modrinth (NeoForge)
+      uses: Kir-Antipov/mc-publish@v3.3
+      with:
+        modrinth-id: h0MqxOhk
+        modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+        files: neoforge/build/libs/*[0-9].jar
+        name: Villager Trainers ${{ github.ref_name }} (NeoForge)
+        version: ${{ github.ref_name }}
+        version-type: release
+        loaders: neoforge
+        game-versions: ">=1.21.1"
+        dependencies: |
+          architectury-api@>=13.0.8 | depends
+        changelog-file: CHANGELOG.md
