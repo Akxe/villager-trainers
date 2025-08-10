@@ -28,8 +28,6 @@ Details for each point: [MECHANICS.md](MECHANICS.md).
 
 ## Village Type Pools (Reference)
 
-Transposed matrix (TRUE = type can appear in that village's pools):
-
 | Type    | Desert | Jungle | Plains | Savanna | Snow | Swamp | Taiga |
 |---------|:------:|:------:|:------:|:-------:|:----:|:-----:|:-----:|
 | Normal  | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
