@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'villager_trainers'
+rootProject.name = 'Villager Trainers'
 
 include 'common'
 include 'fabric'

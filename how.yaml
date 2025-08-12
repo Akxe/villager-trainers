@@ -1,0 +1,11 @@
+run:
+  fabric:
+    client: ./gradlew clean fabric:runClient --console=plain
+    server: ./gradlew clean fabric:runServer --console=plain
+  neoforge:
+    client: ./gradlew clean neoforge:runClient --console=plain
+    server: ./gradlew clean neoforge:runServer --console=plain
+build:
+  develop: ./gradlew clean build --console=plain
+  release: ./gradlew clean build --console=plain -Prelease
+publish: inenv ./tools/publish
